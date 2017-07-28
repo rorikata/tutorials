@@ -1,0 +1,40 @@
+<!-- views/connect-local.ejs -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Node Authentication</title>
+        <!-- load bootstrap css-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- load fontawesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body {padding-top: 80px; word-wrap: break-word;}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h1><span class="fa fa-user"></span> Add Local Account</h1>
+                <!-- show any messages that come back with authentication -->
+                <% if (message.length > 0) { %>
+                    <div class="alert alert-danger"><%= message %></div>
+                <% } %>
+
+                <!-- Login Form -->
+                <form action="/auth/connect/local" method="post">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-warning btn-lg">Add Local</button>
+                </form>
+                <hr>
+                <p><a href="/profile">Go back to profile</a></p>
+            </div>
+        </div>
+    </body>
+</html>

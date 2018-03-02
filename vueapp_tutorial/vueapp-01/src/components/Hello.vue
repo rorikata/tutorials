@@ -18,7 +18,6 @@
     </div>
     <button type="submit" class="btn btn-large btn-block btn-primary full-width" v-on:click="addToAPI">Submit</button>
     <button class="btn btn-large btn-block btn-success full-width">Go User</button>
-
   </form>
 </div>
 </template>

@@ -1,26 +1,35 @@
-// src/components/TodoList.vue
-
 <template>
   <div id="todolist">
-      <ul>
-          <li v-for="todo in todos">
-              <todo v-bind:todo="todo" v-bind:key="todo.id">
-              </todo>
-          </li>
-      </ul>
+      <b-table striped hover
+               @row-dblcliked="dblclicked"
+               :items="todos"
+               :fields="fields">
+      </b-table>
   </div>
 </template>
 
 <script>
-import Todo from './Todo.vue'
-
 export default {
-  components: {
-    Todo
-  },
+  name: 'todo-list',
   computed: {
     todos() {
       return this.$store.state.todos
+    }
+  },
+  methods: {
+    dblcliked (item, index, event) {
+      console.log('double clicked: ', item.text)
+    }
+  },
+  data () {
+    return {
+      fields: [
+        {key: 'text', sortable: true},
+        {key: 'deadline', sortable: true},
+        {key: 'priority', sortable: true},
+        {key: 'done', sortable: true},
+        {key: 'memo', sortable: false}
+      ]
     }
   }
 }

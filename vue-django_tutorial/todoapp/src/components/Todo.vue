@@ -1,5 +1,3 @@
-// src/components/Todo.vue
-
 <template>
     <li>
         {{ todo.text }}

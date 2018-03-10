@@ -1,0 +1,29 @@
+[
+{
+  "model": "app1.ipaddress",
+  "pk": 1,
+  "fields": {
+    "ipaddress": "192.168.0.0",
+    "status": "not_available",
+    "description": "Network address"
+  }
+},
+{
+  "model": "app1.ipaddress",
+  "pk": 2,
+  "fields": {
+    "ipaddress": "192.168.0.1",
+    "status": "available",
+    "description": ""
+  }
+},
+{
+  "model": "app1.ipaddress",
+  "pk": 3,
+  "fields": {
+    "ipaddress": "192.168.0.2",
+    "status": "available",
+    "description": ""
+  }
+}
+]

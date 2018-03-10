@@ -5,6 +5,7 @@ import Vuex from 'vuex'
 import api from './api.js'
 
 Vue.use(Vuex)
+
 const apiRoot = 'http://localhost:8000' // This will change if you deploy later
 // only required if you're using modules.
 // We're using modlues in this tutorial.
@@ -17,15 +18,14 @@ const store =  new Vuex.Store({
         // Keep in mind that response is an HTTP response
         // returned by the Promise.
         // The mutations are in charge of updating the client state.
-        'GET_TODOS': function(state, resonse) {
+        'GET_TODOS': function(state, response) {
             state.todos = response.body
         },
-        'ADD_TODO': function(state, todo) {
-            state.todos.push(todo)
+        'ADD_TODO': function(state, response) {
+            state.todos.push(response.body)
         },
         'CLEAR_TODOS': function(state) {
-            const todos = state.todos
-            todos.splice(0, todos.length)
+            console.log(state)
         },
         // Note that we added one more for logging out errors.
         'API_FAIL': function(state, error) {
@@ -41,12 +41,12 @@ const store =  new Vuex.Store({
                 .catch((error) => store.commit('API_FAIL', error))
         },
         addTodo(store, todo) {
-            return api.get(apiRoot + '/todos/', todo)
+            return api.post(apiRoot + '/todos/', todo)
                 .then((response) => store.commit('ADD_TODOS', response))
                 .catch((error) => store.commit('API_FAIL', error))
         },
         clearTodos(store) {
-            return api.get(apiRoot + '/todos/clear_todos/')
+            return api.delete(apiRoot + '/todos/clear_todos/')
                 .then((response) => store.commit('CLEAR_TODOS'))
                 .catch((error) => store.commit('API_FAIL', error))
         }
